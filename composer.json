@@ -17,8 +17,7 @@
     "require": {
         "illuminate/support": "5.3.*",
         "intervention/image": "^2.3",
-        "doctrine/dbal": "^2.5",
-        "philipp15b/php-i18n": "3.0"
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "phpunit/phpcov": "~3.0",
@@ -36,11 +35,5 @@
             "TCG\\Voyager\\Tests\\": "tests/"
       }
     },
-    "minimum-stability": "stable",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Philipp15b/php-i18n.git"
-        }
-    ]
+    "minimum-stability": "stable"
 }
