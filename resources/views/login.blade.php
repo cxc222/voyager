@@ -206,7 +206,7 @@
 
     <div id="login_section">
         <div class="content">
-            <h2>@lang('voyager.login')</h2>
+            <h2>@lang('voyager::voyager.login')</h2>
             <p>Sign in below:</p>
             <div style="clear:both"></div>
             <form action="{{ route('voyager.login') }}" method="POST" id="login">
