@@ -22,6 +22,8 @@ class Voyager
         $this->filesystem = app(Filesystem::class);
 
         $this->findVersion();
+
+        App::setLocale("zh-CN");
     }
 
     public static function getInstance()
