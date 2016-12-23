@@ -1,3 +1,15 @@
+主要增加 i18n 语言包
+
+1. 增加lang包
+
+2. 增加zh-CN包
+
+使用方法:
+
+    修改 config/app.php 中的 
+    
+    `'locale' => 'en' => 'locale' => 'zh-CN'`
+
 <p align="center"><a href="https://the-control-group.github.io/voyager/" target="_blank"><img width="400" src="https://s3.amazonaws.com/thecontrolgroup/voyager.png"></a></p>
 
 <p align="center">
