@@ -13,7 +13,6 @@ return [
     'created_at' => 'Created At',
     'avatar' => 'Avatar',
     'role' => 'Role',
-    'actions' => 'Actions',
 
     'delete_tip' => 'Are you sure you want to delete this :USERNAME?',
     'delete_value' => 'Yes, Delete This :NAME'
