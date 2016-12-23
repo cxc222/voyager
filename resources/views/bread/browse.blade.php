@@ -4,7 +4,7 @@
     <h1 class="page-title">
         <i class="{{ $dataType->icon }}"></i> {{ $dataType->display_name_plural }}
         <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success">
-            <i class="voyager-plus"></i> Add New
+            <i class="voyager-plus"></i> @lang('voyager::bread.add_new')
         </a>
     </h1>
 @stop
@@ -25,7 +25,7 @@
                                     @foreach($dataType->browseRows as $rows)
                                     <th>{{ $rows->display_name }}</th>
                                     @endforeach
-                                    <th class="actions">Actions</th>
+                                    <th class="actions">@lang('voyager::bread.actions')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,13 +47,13 @@
                                     @endforeach
                                     <td class="no-sort no-click">
                                         <div class="btn-sm btn-danger pull-right delete" data-id="{{ $data->id }}" id="delete-{{ $data->id }}">
-                                            <i class="voyager-trash"></i> Delete
+                                            <i class="voyager-trash"></i> @lang('voyager::bread.delete')
                                         </div>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.edit', $data->id) }}" class="btn-sm btn-primary pull-right edit">
-                                            <i class="voyager-edit"></i> Edit
+                                            <i class="voyager-edit"></i> @lang('voyager::bread.edit')
                                         </a>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.show', $data->id) }}" class="btn-sm btn-warning pull-right">
-                                            <i class="voyager-eye"></i> View
+                                            <i class="voyager-eye"></i> @lang('voyager::bread.view')
                                         </a>
                                     </td>
                                 </tr>
@@ -72,17 +72,16 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> Are you sure you want to delete
-                        this {{ $dataType->display_name_singular }}?</h4>
+                    <h4 class="modal-title"><i class="voyager-trash"></i> @lang('voyager::bread.delete_tip', ['name' => $dataType->display_name_singular])</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('voyager.'.$dataType->slug.'.index') }}" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger pull-right delete-confirm"
-                               value="Yes, Delete This {{ $dataType->display_name_singular }}">
+                               value="@lang('voyager::bread.delete_value', ['name' => $dataType->display_name_singular])">
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">@lang('voyager::bread.cancel')</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

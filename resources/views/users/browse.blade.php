@@ -4,7 +4,7 @@
     <h1 class="page-title">
         <i class="{{ $dataType->icon }}"></i> {{ $dataType->display_name_plural }}
         <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success">
-            <i class="voyager-plus"></i> Add New
+            <i class="voyager-plus"></i> @lang('voyager::users.add_new')
         </a>
     </h1>
 @stop
@@ -22,12 +22,12 @@
                         <table id="dataTable" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Created At</th>
-                                    <th>Avatar</th>
-                                    <th>Role</th>
-                                    <th class="actions">Actions</th>
+                                    <th>@lang('voyager::users.name')</th>
+                                    <th>@lang('voyager::users.email')</th>
+                                    <th>@lang('voyager::users.created_at')</th>
+                                    <th>@lang('voyager::users.avatar')</th>
+                                    <th>@lang('voyager::users.role')</th>
+                                    <th class="actions">@lang('voyager::users.actions')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,13 +42,13 @@
                                     <td>{{ $data->role ? $data->role->display_name : '' }}</td>
                                     <td class="no-sort no-click">
                                         <div class="btn-sm btn-danger pull-right delete" data-id="{{ $data->id }}" id="delete-{{ $data->id }}">
-                                            <i class="voyager-trash"></i> Delete
+                                            <i class="voyager-trash"></i> @lang('voyager::users.delete')
                                         </div>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.edit', $data->id) }}" class="btn-sm btn-primary pull-right edit">
-                                            <i class="voyager-edit"></i> Edit
+                                            <i class="voyager-edit"></i> @lang('voyager::users.edit')
                                         </a>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.show', $data->id) }}" class="btn-sm btn-warning pull-right">
-                                            <i class="voyager-eye"></i> View
+                                            <i class="voyager-eye"></i> @lang('voyager::users.view')
                                         </a>
                                     </td>
                                 </tr>
@@ -67,17 +67,16 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> Are you sure you want to delete
-                        this {{ $dataType->display_name_singular }}?</h4>
+                    <h4 class="modal-title"><i class="voyager-trash"></i> @lang('voyager::users.delete_tip', ['username' => $dataType->display_name_singular])</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('voyager.'.$dataType->slug.'.index') }}" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger pull-right delete-confirm"
-                               value="Yes, Delete This {{ $dataType->display_name_singular }}">
+                               value="@lang('voyager::users.delete_value', ['name' => $dataType->display_name_singular])">
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">@lang('voyager::users.cancel')</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

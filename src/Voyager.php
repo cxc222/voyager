@@ -24,7 +24,7 @@ class Voyager
 
         $this->findVersion();
 
-        App::setLocale("zh-CN");
+        //App::setLocale("zh-CN");
     }
 
     public static function getInstance()

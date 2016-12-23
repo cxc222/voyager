@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description" content="admin login">
     <meta name="author" content="">
-    <title>Admin Login</title>
+    <title>@lang('voyager::login.admin_login_title')</title>
     {{-- Voyager CSS --}}
     <link rel="stylesheet" href="{{ config('voyager.assets_path') }}/css/voyager.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
@@ -206,23 +206,23 @@
 
     <div id="login_section">
         <div class="content">
-            <h2>@lang('voyager::voyager.login')</h2>
-            <p>Sign in below:</p>
+            <h2>@lang('voyager::login.sign_in')</h2>
+            <p>@lang('voyager::login.sign_in_below'):</p>
             <div style="clear:both"></div>
             <form action="{{ route('voyager.login') }}" method="POST" id="login">
                 {{ csrf_field() }}
-                <input type="text" class="form-control" name="email" placeholder="email address" value="{{ old('email') }}">
-                <input type="password" class="form-control" name="password" placeholder="password">
+                <input type="text" class="form-control" name="email" placeholder="@lang('voyager::login.email_address')" value="{{ old('email') }}">
+                <input type="password" class="form-control" name="password" placeholder="@lang('voyager::login.password')">
                 <button class="btn btn-primary btn-login" id="voyager-login-btn">
-                    <span class="login_text"><i class="voyager-lock"></i> Login</span>
+                    <span class="login_text"><i class="voyager-lock"></i> @lang('voyager::login.login')</span>
                     <span class="login_loader">
-                        <img class="btn-loading" src="{{ config('voyager.assets_path') }}/images/logo-icon-light.png"> Logging in
+                        <img class="btn-loading" src="{{ config('voyager.assets_path') }}/images/logo-icon-light.png"> @lang('voyager::login.logging_in')
                     </span>
                 </button>
             </form>
             @if (count($errors))
                 <div class="error-login">
-                    The given credentials don't match with an user registered.
+                    @lang('voyager::login.login_fail')
                 </div>
             @endif
         </div>
