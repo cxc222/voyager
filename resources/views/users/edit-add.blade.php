@@ -6,7 +6,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ 'Edit' }}@else{{ 'New' }}@endif {{ $dataType->display_name_singular }}
+        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ trans('voyager::users.edit') }}@else{{ trans('voyager::users.new') }}@endif {{ $dataType->display_name_singular }}
     </h1>
 @stop
 
@@ -18,7 +18,7 @@
                 <div class="panel panel-bordered">
 
                     <div class="panel-heading">
-                        <h3 class="panel-title">@if(isset($dataTypeContent->id)){{ 'Edit' }}@else{{ 'Add New' }}@endif {{ $dataType->display_name_singular }}</h3>
+                        <h3 class="panel-title">@if(isset($dataTypeContent->id)){{ trans('voyager::users.edit') }}@else{{ trans('voyager::users.add_new') }}@endif {{ $dataType->display_name_singular }}</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -46,32 +46,32 @@
                             @endif
 
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">@lang('voyager::users.name')</label>
                                 <input type="text" class="form-control" name="name"
-                                    placeholder="Name" id="name"
+                                    placeholder="@lang('voyager::users.name')" id="name"
                                     value="@if(isset($dataTypeContent->name)){{ old('name', $dataTypeContent->name) }}@else{{old('name')}}@endif">
                             </div>
 
                             <div class="form-group">
-                                <label for="name">Email</label>
+                                <label for="name">@lang('voyager::users.email')</label>
                                 <input type="text" class="form-control" name="email"
-                                       placeholder="Email" id="email"
+                                       placeholder="@lang('voyager::users.email')" id="email"
                                        value="@if(isset($dataTypeContent->email)){{ old('email', $dataTypeContent->email) }}@else{{old('email')}}@endif">
                             </div>
 
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label for="password">@lang('voyager::users.password')</label>
                                 @if(isset($dataTypeContent->password))
                                     <br>
-                                    <small>Leave empty to keep the same</small>
+                                    <small>@lang('voyager::users.empty_keep_same')</small>
                                 @endif
                                 <input type="password" class="form-control" name="password"
-                                       placeholder="Password" id="password"
+                                       placeholder="@lang('voyager::users.password')" id="password"
                                        value="">
                             </div>
 
                             <div class="form-group">
-                                <label for="password">Avatar</label>
+                                <label for="avatar">@lang('voyager::users.avatar')</label>
                                 @if(isset($dataTypeContent->avatar))
                                     <img src="{{ Voyager::image( $dataTypeContent->avatar ) }}"
                                          style="width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="role">User Role</label>
+                                <label for="role">@lang('voyager::users.user_role')</label>
                                 <select name="role_id" id="role" class="form-control">
                                     <?php $roles = TCG\Voyager\Models\Role::all(); ?>
                                     @foreach($roles as $role)
@@ -94,7 +94,7 @@
                         </div><!-- panel-body -->
 
                         <div class="panel-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">@lang('voyager::users.submit')</button>
                         </div>
                     </form>
 

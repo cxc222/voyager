@@ -2,6 +2,7 @@
 
 return [
     'add_new' => '新增用户',
+    'new' => '新增',
     'actions' => '操作',
     'delete' => '删除',
     'edit' => '编辑',
@@ -15,5 +16,5 @@ return [
     'role' => '角色',
 
     'delete_tip' => '你确定要删除该用户 :USERNAME?',
-    'delete_value' => '我确定删除 :NAME'
+    'delete_value' => '我确定删除 :USERNAME'
 ];

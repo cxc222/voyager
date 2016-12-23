@@ -4,7 +4,7 @@
     <h1 class="page-title">
         <i class="voyager-list-add"></i> {{ $dataType->display_name_plural }}
         <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success">
-            <i class="voyager-plus"></i> Add New
+            <i class="voyager-plus"></i> @lang('voyager::common.add_new')
         </a>
     </h1>
 @stop
@@ -16,8 +16,8 @@
 @section('content')
     <div class="container-fluid">
         <div class="alert alert-info">
-            <strong>How To Use:</strong>
-            <p>You can output a menu anywhere on your site by calling <code>Menu::display('name')</code></p>
+            <strong>@lang('voyager::menus.how_to_use')</strong>
+            <p>@lang('voyager::menus.menu_tip')</p>
         </div>
     </div>
 
@@ -32,7 +32,7 @@
                                 @foreach($dataType->browseRows as $rows)
                                 <th>{{ $rows->display_name }}</th>
                                 @endforeach
-                                <th class="actions">Actions</th>
+                                <th class="actions">@lang('voyager::common.actions')</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,13 +49,13 @@
                                     @endforeach
                                     <td class="no-sort no-click">
                                         <div class="btn-sm btn-danger pull-right delete" data-id="{{ $data->id }}">
-                                            <i class="voyager-trash"></i> Delete
+                                            <i class="voyager-trash"></i> @lang('voyager::common.delete')
                                         </div>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.edit', $data->id) }}" class="btn-sm btn-primary pull-right edit">
-                                            <i class="voyager-edit"></i> Edit
+                                            <i class="voyager-edit"></i> @lang('voyager::common.edit')
                                         </a>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.builder', $data->id) }}" class="btn-sm btn-success pull-right">
-                                            <i class="voyager-list"></i> Builder
+                                            <i class="voyager-list"></i> @lang('voyager::common.builder')
                                         </a>
                                     </td>
                                 </tr>
@@ -85,7 +85,7 @@
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger pull-right delete-confirm" value="Yes, Delete This {{ $dataType->display_name_singular }}">
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">@lang('voyager::common.cancel')</button>
                 </div>
             </div>
         </div>

@@ -74,7 +74,7 @@
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger pull-right delete-confirm"
-                               value="@lang('voyager::users.delete_value', ['name' => $dataType->display_name_singular])">
+                               value="@lang('voyager::users.delete_value', ['username' => $dataType->display_name_singular])">
                     </form>
                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">@lang('voyager::users.cancel')</button>
                 </div>

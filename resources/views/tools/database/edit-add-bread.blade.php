@@ -7,7 +7,7 @@
 
 @section('page_header')
     <div class="page-title">
-        <i class="voyager-data"></i> @if(isset($dataType->id)){{ 'Edit BREAD for ' . $dataType->name . ' table' }}@elseif(isset($table)){{ 'Create BREAD for ' . $table . ' table' }}@endif
+        <i class="voyager-data"></i> @if(isset($dataType->id)){{ trans('voyager::database.edit_bread', ['name' => $dataType->name]) }}@elseif(isset($table)){{ trans('voyager::database.create_bread', ['name' => $table]) }}@endif
     </div>
 @stop
 
@@ -36,18 +36,18 @@
                     <div class="panel panel-primary panel-bordered">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title">Edit the rows for the {{ $table }} table below:</h3>
+                            <h3 class="panel-title">@lang('voyager::database.edit_rows', ['table' => $table])</h3>
                         </div>
 
                         <table id="users" class="table table-hover">
                             <thead>
                             <tr>
-                                <th>Field</th>
-                                <th>Field Info</th>
-                                <th>Visibility</th>
-                                <th>Input Type</th>
-                                <th>Display Name</th>
-                                <th>Optional Details</th>
+                                <th>@lang('voyager::database.field')</th>
+                                <th>@lang('voyager::database.field_info')</th>
+                                <th>@lang('voyager::database.visibility')</th>
+                                <th>@lang('voyager::database.input_type')</th>
+                                <th>@lang('voyager::database.display_name')</th>
+                                <th>@lang('voyager::database.optional_details')</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -63,11 +63,11 @@
                                         <strong>Key:</strong> <span>{{ $data->Key }}</span><br/>
                                         <strong>Required:</strong>
                                         @if($data->Null == "NO")
-                                            <span>Yes</span>
+                                            <span>@lang('voyager::database.yes')</span>
                                             <input type="hidden" value="1" name="field_required_{{ $data->Field }}"
                                                    checked="checked">
                                         @else
-                                            <span>No</span>
+                                            <span>@lang('voyager::database.no')</span>
                                             <input type="hidden" value="0" name="field_required_{{ $data->Field }}">
                                         @endif
                                     </td>
@@ -75,28 +75,28 @@
                                         <input type="checkbox"
                                                id="field_browse_{{ $data->Field }}"
                                                name="field_browse_{{ $data->Field }}" @if(isset($dataRow->browse) && $dataRow->browse){{ 'checked="checked"' }}@elseif($data->Key == 'PRI')@elseif($data->Type == 'timestamp' && $data->Field == 'updated_at')@elseif(!isset($dataRow->browse)){{ 'checked="checked"' }}@endif>
-                                        <label for="field_browse_{{ $data->Field }}">Browse</label><br/>
+                                        <label for="field_browse_{{ $data->Field }}">@lang('voyager::database.browse')</label><br/>
                                         <input type="checkbox"
                                                id="field_read_{{ $data->Field }}"
                                                name="field_read_{{ $data->Field }}" @if(isset($dataRow->read) && $dataRow->read){{ 'checked="checked"' }}@elseif($data->Key == 'PRI')@elseif($data->Type == 'timestamp' && $data->Field == 'updated_at')@elseif(!isset($dataRow->read)){{ 'checked="checked"' }}@endif>
-                                        <label for="field_read_{{ $data->Field }}">Read</label><br/>
+                                        <label for="field_read_{{ $data->Field }}">@lang('voyager::database.read')</label><br/>
                                         <input type="checkbox"
                                                id="field_edit_{{ $data->Field }}"
                                                name="field_edit_{{ $data->Field }}" @if(isset($dataRow->edit) && $dataRow->edit){{ 'checked="checked"' }}@elseif($data->Key == 'PRI')@elseif($data->Type == 'timestamp' && $data->Field == 'updated_at')@elseif(!isset($dataRow->edit)){{ 'checked="checked"' }}@endif>
-                                        <label for="field_edit_{{ $data->Field }}">Edit</label><br/>
+                                        <label for="field_edit_{{ $data->Field }}">@lang('voyager::common.edit')</label><br/>
                                         <input type="checkbox"
                                                id="field_add_{{ $data->Field }}"
                                                name="field_add_{{ $data->Field }}" @if(isset($dataRow->add) && $dataRow->add){{ 'checked="checked"' }}@elseif($data->Key == 'PRI')@elseif($data->Type == 'timestamp' && $data->Field == 'created_at')@elseif($data->Type == 'timestamp' && $data->Field == 'updated_at')@elseif(!isset($dataRow->add)){{ 'checked="checked"' }}@endif>
-                                            <label for="field_add_{{ $data->Field }}">Add</label><br/>
+                                            <label for="field_add_{{ $data->Field }}">@lang('voyager::common.add')</label><br/>
                                         <input type="checkbox"
                                                id="field_delete_{{ $data->Field }}"
                                                name="field_delete_{{ $data->Field }}" @if(isset($dataRow->delete) && $dataRow->delete){{ 'checked="checked"' }}@elseif($data->Key == 'PRI')@elseif($data->Type == 'timestamp' && $data->Field == 'updated_at')@elseif(!isset($dataRow->delete)){{ 'checked="checked"' }}@endif>
-                                                <label for="field_delete_{{ $data->Field }}">Delete</label><br/>
+                                                <label for="field_delete_{{ $data->Field }}">@lang('voyager::common.delete')</label><br/>
                                     </td>
                                     <input type="hidden" name="field_{{ $data->Field }}" value="{{ $data->Field }}">
                                     <td>
                                         @if($data->Key == 'PRI')
-                                            <p>Primary Key</p>
+                                            <p>@lang('voyager::database.primary_key')</p>
                                             <input type="hidden" value="PRI" name="field_input_type_{{ $data->Field }}">
                                         @elseif($data->Type == 'timestamp')
                                             <p>Timestamp</p>
@@ -105,38 +105,38 @@
                                         @else
                                             <select name="field_input_type_{{ $data->Field }}">
                                                 <option value="text" @if(isset($dataRow->type) && $dataRow->type == 'text'){{ 'selected' }}@endif>
-                                                    Text Box
+                                                    @lang('voyager::common.text_box')
                                                 </option>
                                                 <option value="text_area" @if(isset($dataRow->type) && $dataRow->type == 'text_area'){{ 'selected' }}@endif>
-                                                    Text Area
+                                                    @lang('voyager::common.text_area')
                                                 </option>
                                                 <option value="rich_text_box" @if(isset($dataRow->type) && $dataRow->type == 'rich_text_box'){{ 'selected' }}@endif>
-                                                    Rich Textbox
+                                                    @lang('voyager::common.rich_textbox')
                                                 </option>
                                                 <option value="password" @if(isset($dataRow->type) && $dataRow->type == 'password'){{ 'selected' }}@endif>
-                                                    Password
+                                                    @lang('voyager::common.password')
                                                 </option>
                                                 <option value="hidden" @if(isset($dataRow->type) && $dataRow->type == 'hidden'){{ 'selected' }}@endif>
-                                                    Hidden
+                                                    @lang('voyager::common.hidden')
                                                 </option>
                                                 <option value="checkbox" @if(isset($dataRow->type) && $dataRow->type == 'checkbox'){{ 'selected' }}@endif>
-                                                    Check Box
+                                                    @lang('voyager::common.check_box')
                                                 </option>
                                                 <option value="radio_btn" @if(isset($dataRow->type) && $dataRow->type == 'radio_btn'){{ 'selected' }}@endif>
-                                                    Radio Button
+                                                    @lang('voyager::common.radio_button')
                                                 </option>
                                                 <option value="select_dropdown" @if(isset($dataRow->type) && $dataRow->type == 'select_dropdown'){{ 'selected' }}@endif>
-                                                    Select Dropdown
+                                                    @lang('voyager::common.select_dropdown')
                                                 </option>
                                                 </option>
                                                 <option value="select_multiple" @if(isset($dataRow->type) && $dataRow->type == 'select_multiple'){{ 'selected' }}@endif>
-                                                    Multiple Select
+                                                    @lang('voyager::common.select_multiple')
                                                 </option>
                                                 <option value="file" @if(isset($dataRow->type) && $dataRow->type == 'file'){{ 'selected' }}@endif>
-                                                    File
+                                                    @lang('voyager::common.file')
                                                 </option>
                                                 <option value="image" @if(isset($dataRow->type) && $dataRow->type == 'image'){{ 'selected' }}@endif>
-                                                    Image
+                                                    @lang('voyager::common.image')
                                                 </option>
                                             </select>
                                         @endif
@@ -149,10 +149,10 @@
                                         <textarea class="form-control json" name="field_details_{{ $data->Field }}"
                                                   id="field_details_{{ $data->Field }}">@if(isset($dataRow->details)){{ $dataRow->details }}@endif</textarea>
                                         <div id="field_details_{{ $data->Field }}_valid" class="alert-success alert"
-                                             style="display:none">Valid Json
+                                             style="display:none">@lang('voyager::common.valid_json')
                                         </div>
                                         <div id="field_details_{{ $data->Field }}_invalid" class="alert-danger alert"
-                                             style="display:none">Invalid Json
+                                             style="display:none">@lang('voyager::common.invalid_json')
                                         </div>
                                     </td>
                                 </tr>
@@ -204,25 +204,25 @@
 
                         <div class="panel-body">
                             <div class="form-group">
-                                <label for="name">Table Name</label>
-                                <input type="text" class="form-control" readonly name="name" placeholder="Name"
+                                <label for="name">@lang('voyager::database.tabale_name')</label>
+                                <input type="text" class="form-control" readonly name="name" placeholder="@lang('voyager::database.tabale_name_placeholder')"
                                        value="@if(isset($dataType->name)){{ $dataType->name }}@else{{ $table }}@endif">
                             </div>
                             <div class="form-group">
-                                <label for="email">URL Slug (must be unique)</label>
-                                <input type="text" class="form-control" name="slug" placeholder="URL slug (ex. posts)"
+                                <label for="email">@lang('voyager::database.url_slug')</label>
+                                <input type="text" class="form-control" name="slug" placeholder="@lang('voyager::database.url_slug_placeholder')"
                                        value="@if(isset($dataType->slug)){{ $dataType->slug }}@else{{ $slug }}@endif">
                             </div>
                             <div class="form-group">
-                                <label for="email">Display Name (Singular)</label>
+                                <label for="email">@lang('voyager::database.display_name')</label>
                                 <input type="text" class="form-control" name="display_name_singular"
-                                       placeholder="Display Name (Singular)"
+                                       placeholder="@lang('voyager:database.display_name_placeholder')"
                                        value="@if(isset($dataType->display_name_singular)){{ $dataType->display_name_singular }}@else{{ $display_name }}@endif">
                             </div>
                             <div class="form-group">
-                                <label for="email">Display Name (Plural)</label>
+                                <label for="email">@lang('voyager::database.display_name_plural')</label>
                                 <input type="text" class="form-control" name="display_name_plural"
-                                       placeholder="Display Name (Plural)"
+                                       placeholder="@lang('voyager::database.display_name_plural_placeholder')"
                                        value="@if(isset($dataType->display_name_plural)){{ $dataType->display_name_plural }}@else{{ $display_name_plural }}@endif">
                             </div>
                             <div class="form-group">

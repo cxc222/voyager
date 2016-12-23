@@ -162,7 +162,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="voyager-settings"></i> Settings
+        <i class="voyager-settings"></i> @lang('voyager::settings.settings')
     </h1>
 @stop
 
@@ -170,8 +170,8 @@
 
     <div class="container-fluid">
         <div class="alert alert-info">
-            <strong>How To Use:</strong>
-            <p>You can get the value of each setting anywhere on your site by calling <code>Voyager::setting('key')</code></p>
+            <strong>@lang('voyager::common.how_to_use')</strong>
+            <p>@lang('voyager::settings.tip')</p>
         </div>
     </div>
 
@@ -263,7 +263,7 @@
                     @endif
                 @endforeach
             </div>
-            <button type="submit" class="btn btn-primary pull-right">Save Settings</button>
+            <button type="submit" class="btn btn-primary pull-right">@lang('voyager::settings.save')</button>
         </form>
 
         <div style="clear:both"></div>
@@ -271,42 +271,42 @@
         <div class="panel" style="margin-top:10px;">
             <div class="panel-heading new-setting">
                 <hr>
-                <h3 class="panel-title"><i class="voyager-plus"></i> New Setting</h3>
+                <h3 class="panel-title"><i class="voyager-plus"></i> @lang('voyager::settings.new')</h3>
             </div>
             <div class="panel-body">
                 <form action="{{ route('voyager.settings.store') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="col-md-4">
-                        <label for="display_name">Name</label>
+                        <label for="display_name">@lang('voyager::settings.name')</label>
                         <input type="text" class="form-control" name="display_name">
                     </div>
                     <div class="col-md-4">
-                        <label for="key">Key</label>
+                        <label for="key">@lang('voyager::settings.key')</label>
                         <input type="text" class="form-control" name="key">
                     </div>
                     <div class="col-md-4">
-                        <label for="asdf">Type</label>
+                        <label for="asdf">@lang('voyager::settings.type')</label>
                         <select name="type" class="form-control">
-                            <option value="text">Text Box</option>
-                            <option value="text_area">Text Area</option>
-                            <option value="rich_text_box">Rich Textbox</option>
-                            <option value="checkbox">Check Box</option>
-                            <option value="radio_btn">Radio Button</option>
-                            <option value="select_dropdown">Select Dropdown</option>
-                            <option value="file">File</option>
-                            <option value="image">Image</option>
+                            <option value="text">@lang('voyager::settings.text_box')</option>
+                            <option value="text_area">@lang('voyager::settings.text_area')</option>
+                            <option value="rich_text_box">@lang('voyager::settings.rich_textbox')</option>
+                            <option value="checkbox">@lang('voyager::settings.check_box')</option>
+                            <option value="radio_btn">@lang('voyager::settings.radio_button')</option>
+                            <option value="select_dropdown">@lang('voyager::settings.select_dropdown')</option>
+                            <option value="file">@lang('voyager::settings.file')</option>
+                            <option value="image">@lang('voyager::settings.image')</option>
                         </select>
                     </div>
                     <div class="col-md-12">
-                        <a id="toggle_options"><i class="voyager-double-down"></i> OPTIONS</a>
+                        <a id="toggle_options"><i class="voyager-double-down"></i> @lang('voyager::settings.options_title')</a>
                         <div class="new-settings-options">
-                            <label for="options">Options
-                                <small>(optional, only applies to certain types like dropdown box or radio button)
+                            <label for="options">@lang('voyager::settings.options')
+                                <small>@lang('voyager::settings.options_tip')
                                 </small>
                             </label>
                             <textarea name="details" id="options_textarea" class="form-control"></textarea>
-                            <div id="valid_options" class="alert-success alert" style="display:none">Valid Json</div>
-                            <div id="invalid_options" class="alert-danger alert" style="display:none">Invalid Json</div>
+                            <div id="valid_options" class="alert-success alert" style="display:none">@lang('voyager::settings.valid_json')</div>
+                            <div id="invalid_options" class="alert-danger alert" style="display:none">@lang('voyager::settings.invalid_json')</div>
                         </div>
                     </div>
                     <script>
@@ -352,7 +352,7 @@
                     </script>
                     <div style="clear:both"></div>
                     <button type="submit" class="btn btn-primary pull-right new-setting-btn">
-                        <i class="voyager-plus"></i> Add New Setting
+                        <i class="voyager-plus"></i> @lang('voyager::settings.add_new')
                     </button>
                     <div style="clear:both"></div>
                 </form>
@@ -368,16 +368,16 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <h4 class="modal-title">
-                        <i class="voyager-trash"></i> Are you sure you want to delete the <span id="delete_setting_title"></span> Setting?
+                        @lang('voyager::settings.delete_title')
                     </h4>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('voyager.settings.delete', ['id' => '__id']) }}" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
-                        <input type="submit" class="btn btn-danger pull-right delete-confirm" value="Yes, Delete This Setting">
+                        <input type="submit" class="btn btn-danger pull-right delete-confirm" value="@lang('voyager::settings.delete_btn')">
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">@lang('voyager::common.cancel')</button>
                 </div>
             </div>
         </div>

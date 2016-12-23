@@ -2,7 +2,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="voyager-data"></i> @if(isset($table)){{ 'Editing ' . $table . ' table' }}@else{{ 'New Table' }}@endif
+        <i class="voyager-data"></i> @if(isset($table)){{ trans('voyager::database.editing', ['table' => $table]) }}@else{{ trans('voyager::database.new') }}@endif
     </h1>
 @stop
 
@@ -13,11 +13,11 @@
         <thead>
         <tr>
             <th></th>
-            <th>Field Name</th>
-            <th>DB Type</th>
-            <th>Allow Null?</th>
-            <th>Key</th>
-            <th>Default Value</th>
+            <th>@lang('voyager::database.name')</th>
+            <th>@lang('voyager::database.type')</th>
+            <th>@lang('voyager::database.allow')</th>
+            <th>@lang('voyager::database.key')</th>
+            <th>@lang('voyager::database.value')</th>
             <th></th>
         </tr>
         </thead>
@@ -37,29 +37,29 @@
             <td>
                 <select name="type[]" class="form-control fieldType" tabindex="-1">
                     <optgroup label="Type">
-                        <option value="tinyInteger">TINY INTEGER</option>
-                        <option value="smallInteger">SMALL INTEGER</option>
-                        <option value="mediumInteger">MEDIUM INTEGER</option>
-                        <option value="integer">INTEGER</option>
-                        <option value="bigInteger">BIG INTEGER</option>
-                        <option value="string" selected="selected">STRING</option>
-                        <option value="text">TEXT</option>
-                        <option value="mediumText">MEDIUM TEXT</option>
-                        <option value="longText">LONG TEXT</option>
-                        <option value="float">FLOAT</option>
-                        <option value="double">DOUBLE</option>
-                        <option value="decimal">DECIMAL</option>
-                        <option value="boolean">BOOLEAN</option>
-                        <option value="enum">ENUM</option>
-                        <option value="date">DATE</option>
-                        <option value="dateTime">DATETIME</option>
-                        <option value="time">TIME</option>
-                        <option value="timestamp">TIMESTAMP</option>
-                        <option value="binary">BINARY</option>
+                        <option value="tinyInteger">@lang('voyager::database.tinyInteger')</option>
+                        <option value="smallInteger">@lang('voyager::database.smallInteger')</option>
+                        <option value="mediumInteger">@lang('voyager::database.mediumInteger')</option>
+                        <option value="integer">@lang('voyager::database.integer')</option>
+                        <option value="bigInteger">@lang('voyager::database.bigInteger')</option>
+                        <option value="string" selected="selected">@lang('voyager::database.string')</option>
+                        <option value="text">@lang('voyager::database.text')</option>
+                        <option value="mediumText">@lang('voyager::database.mediumText')</option>
+                        <option value="longText">@lang('voyager::database.longText')</option>
+                        <option value="float">@lang('voyager::database.float')</option>
+                        <option value="double">@lang('voyager::database.double')</option>
+                        <option value="decimal">@lang('voyager::database.decimal')</option>
+                        <option value="boolean">@lang('voyager::database.boolean')</option>
+                        <option value="enum">@lang('voyager::database.enum')</option>
+                        <option value="date">@lang('voyager::database.date')</option>
+                        <option value="dateTime">@lang('voyager::database.dateTime')</option>
+                        <option value="time">@lang('voyager::database.time')</option>
+                        <option value="timestamp">@lang('voyager::database.timestamp')</option>
+                        <option value="binary">@lang('voyager::database.binary')</option>
                     </optgroup>
                 </select>
                 <div class="enum_val">
-                    <small>Enum Values (comma separated)</small>
+                    <small>@lang('voyager::database.enum')</small>
                     <input type="text" class="form-control enum" name="enum[]">
                 </div>
             </td>
@@ -71,8 +71,8 @@
                 <select name="key[]" class="form-control fieldKey" tabindex="-1">
                     <optgroup label="Type">
                         <option value=""></option>
-                        <option value="PRI">Primary</option>
-                        <option value="UNI">Unique</option>
+                        <option value="PRI">@lang('voyager::database.primary')</option>
+                        <option value="UNI">@lang('voyager::database.unique')</option>
                     </optgroup>
                 </select>
             </td>
@@ -96,7 +96,7 @@
                     @if(isset($table)){{ method_field('PUT') }}@endif
                     <div class="panel panel-bordered">
                         <div class="panel-heading">
-                            <h3 class="panel-title">@if(isset($table)){{ 'Edit the ' . $table . ' table below' }}@else{{ 'Create Your New Table Below' }}@endif</h3>
+                            <h3 class="panel-title">@if(isset($table)){{ trans('voyager::database.edit', ['table' => $table]) }}@else{{ trans('voyager::database.create_table') }}@endif</h3>
                         </div>
                         <div class="panel-body">
 
@@ -106,9 +106,9 @@
                                         @else
                                             <div class="col-md-12">
                                                 @endif
-                                                <label for="name">Table Name</label><br>
+                                                <label for="name">@lang('voyager::database.tabale_name')</label><br>
                                                 <input type="text" name="name" class="form-control"
-                                                       placeholder="Table Name"
+                                                       placeholder="@lang('voyager::database.tabale_name_placeholder')"
                                                        value="@if(isset($table)){{ $table }}@endif">
                                                 @if(isset($table))
                                                     <input type="hidden" name="original_name" class="form-control"
@@ -118,7 +118,7 @@
 
                                             @if(!isset($table))
                                                 <div class="col-md-3 col-sm-4 col-xs-6">
-                                                    <label for="create_model">Create model for this table?</label><br>
+                                                    <label for="create_model">@lang('voyager::database.create_model')</label><br>
                                                     <input type="checkbox" name="create_model" data-toggle="toggle"
                                                            data-on="Yes, Please" data-off="No Thanks">
 
@@ -127,24 +127,24 @@
 
                                             @if(!isset($table))
                                                 <div class="col-md-3 col-sm-4 col-xs-6">
-                                                    <label for="create_migration">Create migration for this table?</label><br>
+                                                    <label for="create_migration">@lang('voyager::database.create_migration')</label><br>
                                                     <input type="checkbox" name="create_migration" data-toggle="toggle"
                                                            data-on="Yes, Please" data-off="No Thanks">
 
                                                 </div>
                                             @endif
                                     </div>
-                                    <p>Table Fields</p>
+                                    <p>@lang('voyager::database.table_fields')</p>
 
                                     <table class="table table-bordered" style="width:100%;">
                                         <thead>
                                         <tr>
                                             <th></th>
-                                            <th>Field Name</th>
-                                            <th>DB Type</th>
-                                            <th>Allow Null?</th>
-                                            <th>Key</th>
-                                            <th>Default Value</th>
+                                            <th>@lang('voyager::database.name')</th>
+                                            <th>@lang('voyager::database.type')</th>
+                                            <th>@lang('voyager::database.allow')</th>
+                                            <th>@lang('voyager::database.key')</th>
+                                            <th>@lang('voyager::database.value')</th>
                                             <th></th>
                                         </tr>
                                         </thead>
@@ -154,11 +154,11 @@
                                     </table>
 
                                     <div style="text-align:center">
-                                        <div class="btn btn-success" id="newField">+ Add New Field</div>
-                                        <div class="btn btn-success" id="newFieldPrimary">+ Add Primary Field</div>
+                                        <div class="btn btn-success" id="newField">+ @lang('voyager::database.add_new_field')</div>
+                                        <div class="btn btn-success" id="newFieldPrimary">+ @lang('voyager::database.add_primary_field')</div>
                                         @if(!isset($table))
-                                            <div class="btn btn-success" id="newFieldTimestamps">+ Add Timestamp Fields</div>
-                                            <div class="btn btn-success" id="newFieldSoftDelete">+ Add Soft Delete Field</div>
+                                            <div class="btn btn-success" id="newFieldTimestamps">+ @lang('voyager::database.add_timestamp_fields')</div>
+                                            <div class="btn btn-success" id="newFieldSoftDelete">+ @lang('voyager::database.add_soft_delete_field')</div>
                                         @endif
                                     </div>
                             </div>

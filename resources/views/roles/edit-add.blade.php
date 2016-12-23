@@ -6,7 +6,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ 'Edit' }}@else{{ 'New' }}@endif {{ $dataType->display_name_singular }}
+        <i class="{{ $dataType->icon }}"></i> @if(isset($dataTypeContent->id)){{ trans('voyager::common.edit') }}@else{{ trans('voyager::common.new') }}@endif {{ $dataType->display_name_singular }}
     </h1>
 @stop
 
@@ -18,7 +18,7 @@
                 <div class="panel panel-bordered">
 
                     <div class="panel-heading">
-                        <h3 class="panel-title">@if(isset($dataTypeContent->id)){{ 'Edit' }}@else{{ 'Add New' }}@endif {{ $dataType->display_name_singular }}</h3>
+                        <h3 class="panel-title">@if(isset($dataTypeContent->id)){{ trans('voyager::common.edit') }}@else{{ trans('voyager::common.add_new') }}@endif {{ $dataType->display_name_singular }}</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -57,7 +57,7 @@
                                     @elseif($row->type == "password")
                                         @if(isset($dataTypeContent->{$row->field}))
                                             <br>
-                                            <small>Leave empty to keep the same</small>
+                                            <small>@lang('voyager::common.empty_keep_same')</small>
                                         @endif
                                         <input type="password" class="form-control" name="{{ $row->field }}" value="">
                                     @elseif($row->type == "text_area")
@@ -128,8 +128,8 @@
                                 </div>
                             @endforeach
 
-                            <label for="permission">Permissions</label><br>
-                            <a href="#" class="permission-select-all">Select All</a> / <a href="#"  class="permission-deselect-all">Deselect All</a>
+                            <label for="permission">@lang('voyager::roles.permissions')</label><br>
+                            <a href="#" class="permission-select-all">@lang('voyager::common.select_all')</a> / <a href="#"  class="permission-deselect-all">@lang('voyager::common.deselect_all')</a>
                             <ul class="permissions checkbox">
                                 <?php
                                     $role_permissions = (isset($dataTypeContent)) ? $dataTypeContent->permissions->pluck('key')->toArray() : [];
@@ -151,7 +151,7 @@
                             </ul>
                         </div><!-- panel-body -->
                         <div class="panel-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">@lang('voyager::common.submit')</button>
                         </div>
                     </form>
 

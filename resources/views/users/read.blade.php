@@ -2,7 +2,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i> Viewing {{ ucfirst($dataType->display_name_singular) }}
+        <i class="{{ $dataType->icon }}"></i> @lang('voyager::users.viewing') {{ ucfirst($dataType->display_name_singular) }}
     </h1>
 @stop
 
@@ -38,7 +38,7 @@
                     @endforeach
 
                     <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">User Role</h3>
+                        <h3 class="panel-title">@lang('voyager::users.user_role')</h3>
                     </div>
 
                     <div class="panel-body" style="padding-top:0;">
