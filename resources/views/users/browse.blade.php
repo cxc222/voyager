@@ -4,7 +4,7 @@
     <h1 class="page-title">
         <i class="{{ $dataType->icon }}"></i> {{ $dataType->display_name_plural }}
         <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success">
-            <i class="voyager-plus"></i> @lang('voyager::users.add_new')
+            <i class="voyager-plus"></i> @lang('voyager::common.add_new')
         </a>
     </h1>
 @stop
@@ -22,12 +22,12 @@
                         <table id="dataTable" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>@lang('voyager::users.name')</th>
-                                    <th>@lang('voyager::users.email')</th>
-                                    <th>@lang('voyager::users.created_at')</th>
-                                    <th>@lang('voyager::users.avatar')</th>
-                                    <th>@lang('voyager::users.role')</th>
-                                    <th class="actions">@lang('voyager::users.actions')</th>
+                                    <th>@lang('voyager::common.name')</th>
+                                    <th>@lang('voyager::common.email')</th>
+                                    <th>@lang('voyager::common.created_at')</th>
+                                    <th>@lang('voyager::common.avatar')</th>
+                                    <th>@lang('voyager::common.role')</th>
+                                    <th class="actions">@lang('voyager::common.actions')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,13 +42,13 @@
                                     <td>{{ $data->role ? $data->role->display_name : '' }}</td>
                                     <td class="no-sort no-click">
                                         <div class="btn-sm btn-danger pull-right delete" data-id="{{ $data->id }}" id="delete-{{ $data->id }}">
-                                            <i class="voyager-trash"></i> @lang('voyager::users.delete')
+                                            <i class="voyager-trash"></i> @lang('voyager::common.delete')
                                         </div>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.edit', $data->id) }}" class="btn-sm btn-primary pull-right edit">
-                                            <i class="voyager-edit"></i> @lang('voyager::users.edit')
+                                            <i class="voyager-edit"></i> @lang('voyager::common.edit')
                                         </a>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.show', $data->id) }}" class="btn-sm btn-warning pull-right">
-                                            <i class="voyager-eye"></i> @lang('voyager::users.view')
+                                            <i class="voyager-eye"></i> @lang('voyager::common.view')
                                         </a>
                                     </td>
                                 </tr>

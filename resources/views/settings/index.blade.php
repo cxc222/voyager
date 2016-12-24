@@ -287,14 +287,14 @@
                     <div class="col-md-4">
                         <label for="asdf">@lang('voyager::settings.type')</label>
                         <select name="type" class="form-control">
-                            <option value="text">@lang('voyager::settings.text_box')</option>
-                            <option value="text_area">@lang('voyager::settings.text_area')</option>
-                            <option value="rich_text_box">@lang('voyager::settings.rich_textbox')</option>
-                            <option value="checkbox">@lang('voyager::settings.check_box')</option>
-                            <option value="radio_btn">@lang('voyager::settings.radio_button')</option>
-                            <option value="select_dropdown">@lang('voyager::settings.select_dropdown')</option>
-                            <option value="file">@lang('voyager::settings.file')</option>
-                            <option value="image">@lang('voyager::settings.image')</option>
+                            <option value="text">@lang('voyager::common.text_box')</option>
+                            <option value="text_area">@lang('voyager::common.text_area')</option>
+                            <option value="rich_text_box">@lang('voyager::common.rich_textbox')</option>
+                            <option value="checkbox">@lang('voyager::common.check_box')</option>
+                            <option value="radio_btn">@lang('voyager::common.radio_button')</option>
+                            <option value="select_dropdown">@lang('voyager::common.select_dropdown')</option>
+                            <option value="file">@lang('voyager::common.file')</option>
+                            <option value="image">@lang('voyager::common.image')</option>
                         </select>
                     </div>
                     <div class="col-md-12">
@@ -305,8 +305,8 @@
                                 </small>
                             </label>
                             <textarea name="details" id="options_textarea" class="form-control"></textarea>
-                            <div id="valid_options" class="alert-success alert" style="display:none">@lang('voyager::settings.valid_json')</div>
-                            <div id="invalid_options" class="alert-danger alert" style="display:none">@lang('voyager::settings.invalid_json')</div>
+                            <div id="valid_options" class="alert-success alert" style="display:none">@lang('voyager::common.valid_json')</div>
+                            <div id="invalid_options" class="alert-danger alert" style="display:none">@lang('voyager::common.invalid_json')</div>
                         </div>
                     </div>
                     <script>

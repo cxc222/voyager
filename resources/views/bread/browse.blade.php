@@ -4,7 +4,7 @@
     <h1 class="page-title">
         <i class="{{ $dataType->icon }}"></i> {{ $dataType->display_name_plural }}
         <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success">
-            <i class="voyager-plus"></i> @lang('voyager::bread.add_new')
+            <i class="voyager-plus"></i> @lang('voyager::common.add_new')
         </a>
     </h1>
 @stop
@@ -47,13 +47,13 @@
                                     @endforeach
                                     <td class="no-sort no-click">
                                         <div class="btn-sm btn-danger pull-right delete" data-id="{{ $data->id }}" id="delete-{{ $data->id }}">
-                                            <i class="voyager-trash"></i> @lang('voyager::bread.delete')
+                                            <i class="voyager-trash"></i> @lang('voyager::common.delete')
                                         </div>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.edit', $data->id) }}" class="btn-sm btn-primary pull-right edit">
-                                            <i class="voyager-edit"></i> @lang('voyager::bread.edit')
+                                            <i class="voyager-edit"></i> @lang('voyager::common.edit')
                                         </a>
                                         <a href="{{ route('voyager.'.$dataType->slug.'.show', $data->id) }}" class="btn-sm btn-warning pull-right">
-                                            <i class="voyager-eye"></i> @lang('voyager::bread.view')
+                                            <i class="voyager-eye"></i> @lang('voyager::common.view')
                                         </a>
                                     </td>
                                 </tr>
@@ -81,7 +81,7 @@
                         <input type="submit" class="btn btn-danger pull-right delete-confirm"
                                value="@lang('voyager::bread.delete_value', ['name' => $dataType->display_name_singular])">
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">@lang('voyager::bread.cancel')</button>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">@lang('voyager::common.cancel')</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -92,7 +92,7 @@
     <!-- DataTables -->
     <script>
         $(document).ready(function () {
-            $('#dataTable').DataTable({ "order": [] });
+            $('#dataTable').DataTable({ "order": [], language: langs ? langs: {} });
         });
 
         $('td').on('click', '.delete', function (e) {
