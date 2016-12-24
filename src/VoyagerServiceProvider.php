@@ -2,6 +2,7 @@
 
 namespace TCG\Voyager;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\App;
@@ -60,6 +61,8 @@ class VoyagerServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'voyager');
 
         $router->middleware('admin.user', VoyagerAdminMiddleware::class);
+
+        View::share('lang', str_replace("-", "", App::getLocale()));
     }
 
     /**
@@ -87,6 +90,9 @@ class VoyagerServiceProvider extends ServiceProvider
             'views' => [
                 "$basePath/publishable/views/" => resource_path('views/vendor/voyager'),
             ],
+            'lang' => [
+                "$basePath/resources/lang/" => resource_path('lang/vendor/voyager'),
+            ]
         ];
 
         foreach ($publishable as $group => $paths) {

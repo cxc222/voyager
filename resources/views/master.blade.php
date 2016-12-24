@@ -43,6 +43,19 @@
     <link rel="stylesheet" href="{{ config('voyager.assets_path') }}/css/voyager.css">
 
     @yield('head')
+    <script type="text/javascript">
+        var langs = {};
+        @if ($lang)
+            $.ajax({
+                url: "{{ config('voyager.assets_path') }}/lang/{{ $lang }}.json",
+                dataType: 'json',
+                success: function(lang) {
+                    langs = lang;
+                },
+                async:  false
+            });
+        @endif
+    </script>
 
 </head>
 
@@ -189,10 +202,10 @@ $menuExpanded = isset($_COOKIE['expandedMenu']) && $_COOKIE['expandedMenu'] == 1
 <!-- Javascript -->
 
 <script type="text/javascript" src="{{ config('voyager.assets_path') }}/js/readmore.min.js"></script>
-<script type="text/javascript" src="{{ config('voyager.assets_path') }}/js/app.js"></script>
+<script type="text/javascript" src="{{ config('voyager.assets_path') }}/js/app.js?t=123"></script>
 <script type="text/javascript" src="{{ config('voyager.assets_path') }}/lib/js/toastr.min.js"></script>
 <script>
-            @if(Session::has('message'))
+    @if(Session::has('message'))
     var type = "{{ Session::get('alert-type', 'info') }}";
     switch (type) {
         case 'info':

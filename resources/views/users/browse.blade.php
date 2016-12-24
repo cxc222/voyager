@@ -87,7 +87,10 @@
     <!-- DataTables -->
     <script>
         $(document).ready(function () {
-            $('#dataTable').DataTable({ "order": [] });
+            $('#dataTable').DataTable({
+                "order": [],
+                language: langs ? langs: {}
+            });
         });
 
         $('td').on('click', '.delete', function (e) {
