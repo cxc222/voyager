@@ -1,4 +1,4 @@
-主要增加 i18n 语言包
+###主要增加 i18n 语言包
 
 1. 增加lang包
 
@@ -6,9 +6,13 @@
 
 使用方法:
 
-    修改 config/app.php 中的 
+修改 config/app.php 中的 
     
-    `'locale' => 'en' => 'locale' => 'zh-CN'`
+`'locale' => 'en' => 'locale' => 'zh-CN'`
+
+###重写扩展包的语言包
+
+参考[文档](https://laravel-china.org/docs/5.3/localization)
 
 <p align="center"><a href="https://the-control-group.github.io/voyager/" target="_blank"><img width="400" src="https://s3.amazonaws.com/thecontrolgroup/voyager.png"></a></p>
 
